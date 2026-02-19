@@ -1,33 +1,51 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import { Redirect, Tabs } from "expo-router";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useAuth } from "@/src/context/auth-context";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function TabsLayout() {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Redirect href="/(auth)/login" />;
+  }
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        headerStyle: { backgroundColor: "#dcfce7" },
+        headerTintColor: "#064e3b",
+        tabBarActiveTintColor: "#047857",
+        tabBarInactiveTintColor: "#64748b",
+        tabBarStyle: { backgroundColor: "#f8fafc", height: 60 },
+        headerTitleAlign: "center",
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          href: null,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="home"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color, size }) => <Ionicons color={color} name="home-outline" size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="my-missions"
+        options={{
+          title: "My Missions",
+          tabBarIcon: ({ color, size }) => <Ionicons color={color} name="calendar-outline" size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color, size }) => <Ionicons color={color} name="person-outline" size={size} />,
         }}
       />
     </Tabs>
