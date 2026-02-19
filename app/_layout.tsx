@@ -1,24 +1,32 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { LogBox } from "react-native";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { AuthProvider } from "@/src/context/auth-context";
+import { QueryProvider } from "@/src/providers/query-provider";
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import "./globals.css";
+
+LogBox.ignoreLogs([
+  "SafeAreaView has been deprecated and will be removed in a future release.",
+]);
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <QueryProvider>
+      <AuthProvider>
+        <StatusBar style="dark" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: "#f0fdf4",
+            },
+          }}
+        />
+      </AuthProvider>
+    </QueryProvider>
   );
 }
+
+
