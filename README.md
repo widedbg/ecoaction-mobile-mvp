@@ -1,50 +1,107 @@
-# Welcome to your Expo app 👋
+# EcoAction
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Application mobile MVP (Expo + React Native) pour explorer des missions ecologiques et s'y inscrire.
 
-## Get started
+## 1. Fonctionnalites MVP
 
-1. Install dependencies
+- Authentification locale: login / signup
+- Liste des missions: recherche + filtre par categorie
+- Detail mission: informations et places restantes
+- Inscription / annulation avec retour visuel immediat (optimistic UI)
+- Ecran "My Missions"
+- Ecran profil avec compteur
 
-   ```bash
-   npm install
-   ```
+## 2. Stack technique
 
-2. Start the app
+- Expo SDK 54
+- React Native + Expo Router
+- TypeScript strict
+- TanStack Query v5 (`useQuery`, `useMutation`, cache, invalidation)
+- NativeWind
+- JSON-Server (API mock REST)
 
-   ```bash
-   npx expo start
-   ```
+## 3. Structure du depot
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```txt
+app/                 Routes et ecrans Expo Router
+src/api/             Couche appels HTTP et APIs metier
+src/hooks/           Logique TanStack Query
+src/context/         Etat session (auth)
+src/providers/       Providers globaux (QueryClient)
+src/types/           Modeles TypeScript
+src/components/      Composants UI reutilisables
+server/db.json       Donnees mock JSON-Server
+docs/                Note technique + script de demonstration
+demo/                Emplacement du fichier GIF/MP4 final
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 4. Installation et lancement
 
-## Learn more
+Prerequis:
+- Node.js 18+ (22 fonctionne)
+- npm
+- Expo Go (mobile) ou emulateur
 
-To learn more about developing your project with Expo, look at the following resources:
+Installation:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm install
+```
 
-## Join the community
+Lancement (2 terminaux):
 
-Join our community of developers creating universal apps.
+1. API mock:
+```bash
+npm run api
+```
+2. App Expo:
+```bash
+npm start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 5. Configuration reseau (important sur telephone reel)
+
+Creer un fichier `.env` a la racine:
+
+```bash
+EXPO_PUBLIC_API_URL=http://YOUR_LOCAL_IP:3001
+```
+
+Exemple:
+`EXPO_PUBLIC_API_URL=http://192.168.1.20:3001`
+
+Si aucun `.env` n'est defini, l'app tente d'inferer l'IP du host Expo.
+
+## 6. Compte de demonstration
+
+- Email: `sam@ecoaction.app`
+- Mot de passe: `eco123`
+
+## 7. Qualite et verification
+
+```bash
+npm run typecheck
+npm run lint
+```
+
+## 8. Livrables demandes
+
+1. Code source:
+- Depot GitHub organise (ce projet)
+- README clair (ce fichier)
+- Strategie de commits explicites: `docs/commit-plan.md`
+
+2. Demonstration:
+- Script de passage: `docs/demo-script.md`
+- Fichier attendu: `demo/ecoaction-demo.mp4` ou `demo/ecoaction-demo.gif`
+
+3. Note technique (2 pages max):
+- `docs/note-technique.md`
+
+## 9. Proposition de convention de commits
+
+Format recommande:
+- `feat(auth): add signup flow with validation`
+- `feat(missions): implement optimistic join/cancel`
+- `fix(network): infer Expo host for API base URL`
+- `docs(readme): detail setup and deliverables`
