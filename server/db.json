@@ -1,0 +1,83 @@
+{
+  "users": [
+    {
+      "id": "user-001",
+      "username": "Sam Green",
+      "email": "sam@ecoaction.app",
+      "password": "eco123"
+    },
+    {
+      "id": "user-002",
+      "username": "Mia Lopez",
+      "email": "mia@ecoaction.app",
+      "password": "eco123"
+    }
+  ],
+  "missions": [
+    {
+      "id": "mission-001",
+      "title": "River Cleanup Morning",
+      "category": "cleanup",
+      "date": "2026-02-25T09:00:00.000Z",
+      "location": "Austin River Park",
+      "description": "Help remove trash and sort recyclables along the river path.",
+      "totalSpots": 20
+    },
+    {
+      "id": "mission-002",
+      "title": "Neighborhood Tree Planting",
+      "category": "planting",
+      "date": "2026-03-04T15:00:00.000Z",
+      "location": "Oakwood Community Center",
+      "description": "Plant native trees with local volunteers and learn basic care tips.",
+      "totalSpots": 15
+    },
+    {
+      "id": "mission-003",
+      "title": "Zero-Waste Basics Workshop",
+      "category": "education",
+      "date": "2026-03-10T18:00:00.000Z",
+      "location": "Green Library Hall",
+      "description": "Learn easy habits to reduce plastic and household waste.",
+      "totalSpots": 25
+    },
+    {
+      "id": "mission-004",
+      "title": "City Park Cleanup Sprint",
+      "category": "cleanup",
+      "date": "2026-01-30T10:00:00.000Z",
+      "location": "North City Park",
+      "description": "Fast team cleanup mission focused on high-traffic park zones.",
+      "totalSpots": 12
+    },
+    {
+      "id": "mission-005",
+      "title": "School Garden Planting Day",
+      "category": "planting",
+      "date": "2026-02-20T13:30:00.000Z",
+      "location": "Lincoln Middle School",
+      "description": "Support students by planting herbs and pollinator-friendly flowers.",
+      "totalSpots": 10
+    }
+  ],
+  "registrations": [
+    {
+      "id": "reg-003",
+      "missionId": "mission-001",
+      "userId": "user-002",
+      "createdAt": "2026-02-18T10:00:00.000Z"
+    },
+    {
+      "id": "reg-1771522674194-3307",
+      "userId": "user-001",
+      "missionId": "mission-004",
+      "createdAt": "2026-02-19T17:37:54.194Z"
+    },
+    {
+      "id": "reg-1771522675992-4881",
+      "userId": "user-001",
+      "missionId": "mission-001",
+      "createdAt": "2026-02-19T17:37:55.992Z"
+    }
+  ]
+}
