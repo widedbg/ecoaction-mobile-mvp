@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "mobile_eco_app",
-    "slug": "mobile_eco_app",
+    "name": "EcoAction",
+    "slug": "ecoaction",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "mobileecoapp",
+    "scheme": "ecoaction",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
